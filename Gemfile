@@ -11,3 +11,6 @@ gem 'rmagick', '~> 2.15'
 
 # Debugger
 gem 'byebug', '~> 9.0', group: :test
+
+# Logging support
+gem 'logging', '~> 2.1'

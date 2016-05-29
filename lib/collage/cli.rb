@@ -1,7 +1,8 @@
 require 'thor'
-require 'collage'
+require 'logging'
+require 'etventure_collage_maker'
 
-module Collage
+module EtventureCollageMaker
   class Cli < Thor
     desc "create", "build the collage"
     method_option :keywords, aliases: '-k', desc: "A list of keywords, separated by comma"
@@ -10,7 +11,12 @@ module Collage
     method_option :output,   aliases: '-o', desc: "Collage output file"
     def create
       opts = build_opts(options)
-      Collage.create(opts)
+
+      # Logging setup
+      Logging.logger.root.level = :info
+      Logging.logger.root.appenders = Logging.appenders.stdout
+
+      EtventureCollageMaker.create(opts)
     end
 
     private

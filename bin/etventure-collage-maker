@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'collage'
+require 'etventure_collage_maker'
 
-Collage::Cli.start(ARGV)
+EtventureCollageMaker::Cli.start(ARGV)

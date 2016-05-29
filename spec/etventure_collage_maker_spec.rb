@@ -1,13 +1,13 @@
 require 'spec_helper'
-require 'collage'
+require 'etventure_collage_maker'
 
-describe Collage do
+describe EtventureCollageMaker do
   let(:keywords) {[
     'Berlin', 'Germany', 'Europe', 'Computing', 'Ruby',
     'Software', 'Startup', 'Work', 'Job', 'Happiness'
   ]}
   let(:output_file) { 'output.jpg' }
-  before { Collage.create({keywords: keywords}) }
+  before { EtventureCollageMaker.create({keywords: keywords}) }
   after  { File.delete(output_file) if File.exist?(output_file) }
 
   it "should generate collage file" do
