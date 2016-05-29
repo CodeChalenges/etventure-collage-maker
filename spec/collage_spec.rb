@@ -7,7 +7,7 @@ describe Collage do
     'Software', 'Startup', 'Work', 'Job', 'Happiness'
   ]}
   let(:output_file) { 'output.jpg' }
-  before { Collage.create(keywords) }
+  before { Collage.create({keywords: keywords}) }
   after  { File.delete(output_file) if File.exist?(output_file) }
 
   it "should generate collage file" do

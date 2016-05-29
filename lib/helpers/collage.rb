@@ -5,10 +5,10 @@ module Collage
 
   def self.build(args = {})
     raise(ArgumentError, "No image provided") if (args[:images].nil? or args[:images].empty?)
-
+    
     props = {
-      width:  args[:width]  || 1024,
-      height: args[:height] || 768,
+      width:  args[:width].nil?  ? 1024 : args[:width].to_i,
+      height: args[:height].nil? ? 768  : args[:height].to_i,
       images: args[:images],
       output: args[:output] || "output.jpg",
       tile_h: (args[:images].length / 2.0).ceil,

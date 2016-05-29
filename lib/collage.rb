@@ -1,4 +1,5 @@
 require "collage/version"
+require "collage/cli"
 require 'services/flickr_service'
 require 'services/keyword_generator_service'
 require 'helpers/image_handler'
@@ -8,10 +9,10 @@ module Collage
   @flickr = FlickrService.instance
   @keyword_generator = KeywordGeneratorService.instance
 
-  def self.create(keywords = [])
+  def self.create(opts = {})
     images = []
 
-    keywords.each do |keyword|
+    opts[:keywords].each do |keyword|
       image_url = @flickr.get_photo_by_keyword(keyword)
       images << image_url unless image_url.nil?
     end
@@ -30,7 +31,12 @@ module Collage
     end
 
     # Generate collage
-    Collage.build({images: local_images})
+    Collage.build({
+      width:  opts[:width],
+      height: opts[:height],
+      images: local_images,
+      output: opts[:output]
+    })
 
     # Cleanup
     local_images.each do |local_image|
