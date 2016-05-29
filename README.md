@@ -1,41 +1,88 @@
-# Collage
+# Etventure Collage Maker
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/collage`. To experiment with that code, run `bin/console` for an interactive prompt.
+**Etventure Collage Maker** is a Ruby gem which allows to fetch images from Flickr based on some keywords and create a collage with these images.
 
-TODO: Delete this and the text above, and describe your gem
+## Dependencies
 
-## Installation
+This gem depends on:
 
-Add this line to your application's Gemfile:
+* Ruby v2.3.1 or above;
+* [ImageMagick](http://www.imagemagick.org/script/index.php) v6.8.9-9 or above;
 
-```ruby
-gem 'collage'
+## ImageMagick setup
+
+This gem uses the command *montage* of ImageMagick to create the collage.
+This command, however, depends on a Freetype font to work, which isn't installed by default on some Linux distros.
+
+So, a bash script were created to download and install ImageMagick's ghostscript fonts.
+
+To run this script:
+
+```sh
+$ bash bin/install-imagemagick-font
 ```
 
-And then execute:
+> PS: This script were tested on Ubuntu based system. For other operating systems, some adjustments may be necessary.
 
-    $ bundle
+## Gem setup
 
-Or install it yourself as:
+To query images from Flickr, a Flickr API key is necessary.
 
-    $ gem install collage
+> If you don't have a Flickr API key yet, please refer to [Flickr services webpage](https://www.flickr.com/services/api/misc.api_keys.html) to create one.
 
-## Usage
+So, to setup your Flickr API key and shared secret, set the following environent variables:
 
-TODO: Write usage instructions here
+```sh
+$ export FLICKR_API_KEY="[Your Flickr API key]"
+$ export FLICKR_SHARED_SECRET="[Your Flickr shared secret]"
+```
 
-## Development
+Now we're ready to install necessary gems:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+    $ bundle install
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Tests
 
-## Contributing
+To run the automated tests, simple run:
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/collage. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+    $ rspec
 
+## Building and Installing
 
-## License
+To build and install the gem, we use Rake tasks to automate all related operations.
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+So, first we build the gem:
 
+    $ rake build
+
+Once the gem is build, we can install it in our local gems repository:
+
+    $ rake install
+
+Now we're ready to use **Etventure Collage Maker**.
+
+## Running
+
+**Etventure Collage Maker** offers a command line interface.
+
+To run the CLI, just type:
+
+    $ etventure-collage-maker
+
+The main CLI task is *create*, which receives the arguments passed by user and perform all collage related steps (search images, download them and create collage).
+
+To check the arguments accepted by _create_ task, run:
+
+    $ etventure-collage-maker help create
+
+Example:
+
+Let' suppose we want to create a collage with images related to the following keywords: **Germany**, **Berlin**, **Europe**, **Ruby** and **Software**.
+
+So, we can simple run:
+
+    $ etventure-collage-maker create -k Germany,Berlin,Europe,Ruby,Software -o my_collage.jpg
+
+The command above will fetch 5 images, based in the informed keywords, and query another 5 images using random keywords from _/usr/share/dict/words_ file.
+
+The collage will be saved in *my_collage.jpg*
