@@ -23,7 +23,7 @@ class FlickrService
     img_info = @flickr_client.photos.getInfo(photo_id: photo.id, secret: photo.secret)
 
     # Get image public URL
-    img_url = FlickRaw.url_o(img_info)
+    img_url = FlickRaw.url_c(img_info)
 
     img_url
   end
