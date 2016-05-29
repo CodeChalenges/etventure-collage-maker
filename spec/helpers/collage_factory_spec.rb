@@ -1,8 +1,8 @@
 require 'rmagick'
 require "spec_helper"
-require "helpers/collage"
+require "helpers/collage_factory"
 
-RSpec.describe Collage do
+RSpec.describe CollageFactory do
   let(:images) {
     [
       "spec/fixtures/images/dog1.jpg",
@@ -30,7 +30,7 @@ RSpec.describe Collage do
   after { File.delete(arguments[:output]) if File.exist?(arguments[:output]) }
 
   context 'build collage' do
-    before { Collage.build(arguments) }
+    before { CollageFactory.build(arguments) }
     let(:output_image)   { Magick::Image.read(arguments[:output]).first }
     let(:expected_image) { Magick::Image.read('spec/fixtures/images/expected_output.jpg').first }
     let(:difference)     { output_image.difference(expected_image) }
@@ -49,11 +49,11 @@ RSpec.describe Collage do
 
   context "empty image list" do
     before { arguments[:images] = [] }
-    it { expect{Collage.build(arguments)}.to raise_error(ArgumentError) }
+    it { expect{CollageFactory.build(arguments)}.to raise_error(ArgumentError) }
   end
 
   context "nil image list" do
     before { arguments[:images] = nil }
-    it { expect{Collage.build(arguments)}.to raise_error(ArgumentError) }
+    it { expect{CollageFactory.build(arguments)}.to raise_error(ArgumentError) }
   end
 end

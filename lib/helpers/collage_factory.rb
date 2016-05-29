@@ -1,19 +1,24 @@
 require 'rmagick'
+require 'logging'
 
-module Collage
+module CollageFactory
   include Magick
+
+  @log = Logging.logger['CollageFactory']
 
   def self.build(args = {})
     raise(ArgumentError, "No image provided") if (args[:images].nil? or args[:images].empty?)
 
     props = {
-      width:  args[:width]  || 1024,
-      height: args[:height] || 768,
+      width:  args[:width].nil?  ? 1024 : args[:width].to_i,
+      height: args[:height].nil? ? 768  : args[:height].to_i,
       images: args[:images],
       output: args[:output] || "output.jpg",
       tile_h: (args[:images].length / 2.0).ceil,
       tile_v: 2
     }
+
+    @log.debug("Starting collage - props: #{props}")
 
     image_list = ImageList.new
 
@@ -32,12 +37,14 @@ module Collage
     image_dim[:height] = (props[:height] - 6 * padding[:y]) / props[:tile_v]
 
     # Create montage
+    @log.info("Creating collage...")
     image_list = image_list.montage do
       self.tile = "#{props[:tile_h]}x#{props[:tile_v]}"
       self.background_color = "#ffffff"
       self.geometry = "#{image_dim[:width]}x#{image_dim[:height]}+#{padding[:x]}+#{padding[:y]}"
       self.shadow = true
     end
+    @log.info("Collage done!")
 
     # Flatten images and write to output file
     collage = image_list.flatten_images

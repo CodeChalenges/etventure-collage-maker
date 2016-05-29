@@ -28,7 +28,7 @@ class KeywordGeneratorService
       lines = File.readlines('/usr/share/dict/words')
 
       20.times do
-        @keyword_buffer.push(lines.sample)
+        @keyword_buffer.push(lines.sample.strip)
       end
     end
 end
