@@ -15,7 +15,7 @@ class FlickrService
     return nil if (keyword.nil? or keyword.empty?)
 
     # Search the first photo matching the keyword
-    photo = @flickr_client.photos.search(text: keyword).first
+    photo = @flickr_client.photos.search(text: keyword, sort: :relevance).first
 
     # No photo found for the given keyword
     if photo.nil?
