@@ -1,5 +1,10 @@
-sudo: false
+sudo: true
 language: ruby
 rvm:
   - 2.3.1
-before_install: gem install bundler -v 1.12.4
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install imagemagick
+  - sudo apt-get install libmagickwand-dev
+  - gem install bundler -v 1.12.4
+script: bundle exec rspec
