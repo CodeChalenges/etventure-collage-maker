@@ -2,6 +2,9 @@ sudo: true
 language: ruby
 rvm:
   - 2.3.1
+addons:
+  code_climate:
+    repo_token: 4bef62bb5ebba5d095bd42f18ae81754ede8b3e6cb5ede7e89c8090177c747ad
 before_install:
   - sudo apt-get update
   - sudo apt-get install imagemagick
