@@ -39,6 +39,7 @@ module CollageFactory
     # Create montage
     @log.info("Creating collage...")
     image_list = image_list.montage do
+      self.font = ENV['IMAGEMAGICK_FONT'] || 'DejaVu-Sans'
       self.tile = "#{props[:tile_h]}x#{props[:tile_v]}"
       self.background_color = "#ffffff"
       self.geometry = "#{image_dim[:width]}x#{image_dim[:height]}+#{padding[:x]}+#{padding[:y]}"

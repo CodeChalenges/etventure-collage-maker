@@ -12,17 +12,20 @@ This gem depends on:
 ## ImageMagick setup
 
 This gem uses the command *montage* of ImageMagick to create the collage.
-This command, however, depends on a Freetype font to work, which isn't installed by default on some Linux distros.
 
-So, a bash script were created to download and install ImageMagick's ghostscript fonts.
+Montage command is using font *DejaVu-Sans* by default, which is a font that's normally available in the great majority of Linux distributions.
 
-To run this script:
+If this font isn't available on you system, it can be easily changed by defining the following environment variable:
 
 ```sh
-$ bash bin/install-imagemagick-font
+$ export IMAGEMAGICK_FONT="[Put the font name here]"
 ```
 
-> PS: This script were tested on Ubuntu based system. For other operating systems, some adjustments may be necessary.
+The list of all available ImageMagick fonts can be found running the command below:
+
+```sh
+$ convert -list font
+```
 
 ## Gem setup
 
