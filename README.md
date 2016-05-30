@@ -8,6 +8,17 @@ This gem depends on:
 
 * Ruby v2.3.1 or above;
 * [ImageMagick](http://www.imagemagick.org/script/index.php) v6.8.9-9 or above;
+* libmagickwand-dev;
+
+Assuming an Ubuntu distribution, *ImageMagick* and *libmagickwand-dev* can be installed as below:
+
+```sh
+$ sudo apt-get update
+
+$ sudo apt-get install imagemagick
+
+$ sudo apt-get install libmagickwand-dev  
+```
 
 ## ImageMagick setup
 
