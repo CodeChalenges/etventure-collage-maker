@@ -12,5 +12,8 @@ gem 'rmagick', '~> 2.15'
 # Debugger
 gem 'byebug', '~> 9.0', group: :test
 
+# Code coverage report
+gem 'simplecov', require: false, group: :test
+
 # Logging support
 gem 'logging', '~> 2.1'
