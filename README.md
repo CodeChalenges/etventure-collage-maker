@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/mauricioklein/etventure-collage-maker.svg?branch=master)](https://travis-ci.org/mauricioklein/etventure-collage-maker)
+[![Code Climate](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/badges/gpa.svg)](https://codeclimate.com/github/mauricioklein/etventure-collage-maker)
+[![Test Coverage](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/badges/coverage.svg)](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/coverage)
+[![Issue Count](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/badges/issue_count.svg)](https://codeclimate.com/github/mauricioklein/etventure-collage-maker)
+
 # Etventure Collage Maker
 
 **Etventure Collage Maker** is a Ruby gem which allows to fetch images from Flickr based on some keywords and create a collage with these images.
