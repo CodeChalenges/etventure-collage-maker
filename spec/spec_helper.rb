@@ -4,8 +4,8 @@ require 'simplecov'
 require 'codeclimate-test-reporter'
 require 'etventure_collage_maker'
 
-# Simple Cov configuration
-SimpleCov.start
-
 # Code Climate reporter configuration
 CodeClimate::TestReporter.start
+
+# Simple Cov configuration
+SimpleCov.start
