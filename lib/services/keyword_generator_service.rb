@@ -27,6 +27,7 @@ class KeywordGeneratorService
     def fill_buffer
       lines = File.readlines('/usr/share/dict/words')
 
+      @keyword_buffer.clear
       20.times do
         @keyword_buffer.push(lines.sample.strip)
       end

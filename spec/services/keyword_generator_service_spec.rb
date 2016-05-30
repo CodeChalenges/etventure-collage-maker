@@ -5,6 +5,9 @@ RSpec.describe KeywordGeneratorService do
   let(:keyword_generator_service) { KeywordGeneratorService.instance }
   let(:buffer) { keyword_generator_service.keyword_buffer }
 
+  # Force buffer to be refilled before tests
+  before { keyword_generator_service.send(:fill_buffer) }
+
   it 'should start with 20 keywords in buffer' do
     expect(buffer.size).to eq(20)
   end

@@ -18,7 +18,7 @@ RSpec.describe ImageHandler do
   context "clean" do
     before { ImageHandler.clean(tmp_file) }
 
-    it "should remote temporary file" do
+    it "should remove temporary file" do
       expect(File.exist?(tmp_file)).to be false
     end
   end
