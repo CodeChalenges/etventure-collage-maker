@@ -1,5 +1,6 @@
 require "spec_helper"
 require 'securerandom'
+require 'rmagick'
 require "helpers/image_handler"
 
 RSpec.describe ImageHandler do

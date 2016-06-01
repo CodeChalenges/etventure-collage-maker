@@ -1,5 +1,6 @@
 require 'securerandom'
 require 'open-uri'
+require 'rmagick'
 
 module ImageHandler
   @log = Logging.logger['ImageHandler']

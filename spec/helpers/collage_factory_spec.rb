@@ -12,8 +12,8 @@ RSpec.describe CollageFactory do
   }
   let(:arguments) {
     {
-      width:  1024,
-      height: 768,
+      width:  1000,
+      height: 500,
       output: "output.jpg",
       images: images
     }
@@ -74,8 +74,8 @@ RSpec.describe CollageFactory do
     let(:montage_props) { CollageFactory.send(:build_montage_props, props) }
 
     # Expected attributes
-    let(:padding_x) { props[:width]  * 0.01 }
-    let(:padding_y) { props[:height] * 0.01 }
+    let(:padding_x) { 5 }
+    let(:padding_y) { 5 }
     let(:image_dim_width)  { (props[:width]  - 6 * padding_x) / props[:tile_h] }
     let(:image_dim_height) { (props[:height] - 6 * padding_y) / props[:tile_v] }
 

@@ -41,8 +41,8 @@ module CollageFactory
 
   def self.build_props(args)
     {
-      width:  args[:width].nil?  ? 1024 : args[:width].to_i,
-      height: args[:height].nil? ? 768  : args[:height].to_i,
+      width:  args[:width].nil?  ? 1000 : args[:width].to_i,
+      height: args[:height].nil? ? 500  : args[:height].to_i,
       images: args[:images],
       output: args[:output] || "output.jpg",
       tile_h: (args[:images].length / 2.0).ceil,
@@ -55,7 +55,13 @@ module CollageFactory
 
     # Build images and put in list
     images_url.each do |image|
-      image_list << Image.read(image).first
+      image = Image.read(image).first
+
+      # Resize image to fill in a square
+      min_side = [image.columns, image.rows].min
+      image = image.resize_to_fill(min_side, min_side)
+
+      image_list << image
     end
 
     image_list
@@ -64,8 +70,8 @@ module CollageFactory
   def self.build_montage_props(props)
     # Calculate images positions
     padding = {}
-    padding[:x] = props[:width]  * 0.01
-    padding[:y] = props[:height] * 0.01
+    padding[:x] = 5
+    padding[:y] = 5
 
     image_dim = {}
     image_dim[:width]  = (props[:width]  - 6 * padding[:x]) / props[:tile_h]
