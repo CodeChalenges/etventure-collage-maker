@@ -2,6 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/badges/gpa.svg)](https://codeclimate.com/github/mauricioklein/etventure-collage-maker)
 [![Test Coverage](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/badges/coverage.svg)](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/coverage)
 [![Issue Count](https://codeclimate.com/github/mauricioklein/etventure-collage-maker/badges/issue_count.svg)](https://codeclimate.com/github/mauricioklein/etventure-collage-maker)
+[![Dependency Status](https://gemnasium.com/badges/github.com/mauricioklein/etventure-collage-maker.svg)](https://gemnasium.com/github.com/mauricioklein/etventure-collage-maker)
 
 # Etventure Collage Maker
 
